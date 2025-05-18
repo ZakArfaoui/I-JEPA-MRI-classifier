@@ -154,7 +154,7 @@ import numpy as np
 import cv2
 import altair as alt
 import pandas as pd
-
+import os
 # --- Set page configuration as the first Streamlit command ---
 st.set_page_config(page_title="🧠 Brain MRI Classifier", layout="wide")
 
@@ -241,7 +241,8 @@ class ClassifierHead(nn.Module):
         return logits
 
 # --- Model loading ---
-MODEL_DIR = "C:/Users/arfao/Desktop/imp_4c_dataset/models"
+#MODEL_DIR = "C:/Users/arfao/Desktop/imp_4c_dataset/models"
+MODEL_DIR = os.path.join(os.path.dirname(__file__), "models")
 @st.cache_resource(show_spinner=False)
 def load_models():
     encoder = ViTEncoder().to(device)
